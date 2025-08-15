@@ -20,7 +20,7 @@ const Footer = () => {
         {/* About Section */}
         <FooterSection>
           <Logo>
-            <Zap size={24} />
+            <Zap size={24} style={{ marginRight: "0.5rem" }} />
             B4<span>Battery</span>
           </Logo>
           <Description>
@@ -75,30 +75,6 @@ const Footer = () => {
             Careers
           </QuickLink>
         </FooterSection>
-
-        {/* Our Segments */}
-        {/* <FooterSection>
-          <SectionTitle>Our Segments</SectionTitle>
-          <QuickLink href="/products/3-wheeler">
-            <ArrowRight size={16} />3 Wheeler Batteries
-          </QuickLink>
-          <QuickLink href="/products/energy-storage">
-            <ArrowRight size={16} />
-            Energy Storage System
-          </QuickLink>
-          <QuickLink href="/products/home-inverter">
-            <ArrowRight size={16} />
-            Home Inverter Batteries
-          </QuickLink>
-          <QuickLink href="/services">
-            <ArrowRight size={16} />
-            Battery Services
-          </QuickLink>
-          <QuickLink href="/warranty">
-            <ArrowRight size={16} />
-            Warranty Support
-          </QuickLink>
-        </FooterSection> */}
 
         {/* Contact Information */}
         <FooterSection>
@@ -211,7 +187,7 @@ const Logo = styled.div`
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  /* gap: 0.5rem; */
 
   span {
     color: var(--color-primary);

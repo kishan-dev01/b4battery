@@ -5,11 +5,10 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Layout from "./ui/Layout";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Tenants from "./pages/Tenants";
-import ListYourHome from "./pages/ListYourHome";
-import PartnerWithUs from "./pages/PartnerWithUs";
 import { useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import About from "./pages/About";
+import ProductsSection from "./pages/Products";
 
 function App() {
   useEffect(() => {
@@ -23,9 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="" element={<Home />} />
-            <Route path="property-management" element={<ListYourHome />} />
-            <Route path="real-estate-consultant" element={<Tenants />} />
-            <Route path="partner-with-us" element={<PartnerWithUs />} />
+            <Route path="about-us" element={<About />} />
+            <Route path="products" element={<ProductsSection />} />
+
             <Route path="contact" element={<Contact />} />
           </Route>
         </Routes>
