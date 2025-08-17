@@ -10,6 +10,7 @@ import ProductsSection from "./pages/Products";
 import FranchiseModel from "./pages/FranchiseModel";
 import VLEHub from "./pages/VLEHub";
 import Payment from "./pages/Payment";
+import Careers from "./pages/Careers";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
             <Route path="franchise-model" element={<FranchiseModel />} />
             <Route path="vle-hub" element={<VLEHub />} />
             <Route path="emi-payment" element={<Payment />} />
+            <Route path="careers" element={<Careers />} />
           </Route>
         </Routes>
       </BrowserRouter>
