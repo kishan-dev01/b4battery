@@ -7,6 +7,7 @@ import ThemeToggle from "../utils/ThemeToggle";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     setIsOpen(false);
@@ -38,15 +39,33 @@ const NavBar = () => {
         </LogoContainer>
 
         <NavLinks isOpen={isOpen}>
-          {navItems.map((item) => (
-            <StyledNavLink
-              key={item.path}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.title}
-            </StyledNavLink>
-          ))}
+          {navItems.map((item) => {
+            if (item.title === "More") {
+              return (
+                <DropdownContainer
+                  key={item.path}
+                  onMouseEnter={() => setShowDropdown(true)}
+                  onMouseLeave={() => setShowDropdown(false)}
+                >
+                  <StyledNavLink to={item.path}>{item.title}</StyledNavLink>
+                  <DropdownMenu isVisible={showDropdown}>
+                    <DropdownItem to="/contact-us">Contact Us</DropdownItem>
+                    <DropdownItem to="/testimonials">Testimonials</DropdownItem>
+                    <DropdownItem to="/blogs">Blogs</DropdownItem>
+                  </DropdownMenu>
+                </DropdownContainer>
+              );
+            }
+            return (
+              <StyledNavLink
+                key={item.path}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.title}
+              </StyledNavLink>
+            );
+          })}
         </NavLinks>
 
         <ThemeToggleWrapper>
@@ -223,5 +242,66 @@ const Overlay = styled.div`
     bottom: 0;
     background-color: var(--color-overlay);
     z-index: 90;
+  }
+`;
+const DropdownContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "-10px")});
+  transition: all 0.3s ease;
+  z-index: 1001;
+  padding: 0.5rem 0;
+
+  @media (max-width: 1024px) {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-left: 1rem;
+  }
+`;
+
+const DropdownItem = styled(NavLink)`
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--color-bg-secondary);
+    color: var(--color-primary);
+  }
+
+  &.active {
+    color: var(--color-primary);
+    background: var(--color-bg-secondary);
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0.5rem 0;
+    background: transparent !important;
+
+    &:hover {
+      background: transparent !important;
+    }
   }
 `;

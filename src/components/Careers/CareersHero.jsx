@@ -62,7 +62,7 @@ const Section = styled.section`
     var(--color-primary) 0%,
     var(--color-primary-dark) 100%
   );
-  padding: 8rem 2rem 6rem;
+  padding: 6rem 2rem 6rem;
   color: white;
   text-align: center;
   position: relative;

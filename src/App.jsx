@@ -11,6 +11,9 @@ import FranchiseModel from "./pages/FranchiseModel";
 import VLEHub from "./pages/VLEHub";
 import Payment from "./pages/Payment";
 import Careers from "./pages/Careers";
+import ContactUs from "./pages/ContactUs";
+import TestimonialsPage from "./pages/TestimonialsPage";
+import BlogsPage from "./pages/BlogsPage";
 
 function App() {
   useEffect(() => {
@@ -30,6 +33,9 @@ function App() {
             <Route path="vle-hub" element={<VLEHub />} />
             <Route path="emi-payment" element={<Payment />} />
             <Route path="careers" element={<Careers />} />
+            <Route path="contact-us" element={<ContactUs />} />
+            <Route path="testimonials" element={<TestimonialsPage />} />
+            <Route path="blogs" element={<BlogsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
