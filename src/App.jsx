@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import About from "./pages/About";
 import ProductsSection from "./pages/Products";
+import FranchiseModel from "./pages/FranchiseModel";
+import VLEHub from "./pages/VLEHub";
+import Payment from "./pages/Payment";
 
 function App() {
   useEffect(() => {
@@ -22,6 +25,9 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="products" element={<ProductsSection />} />
+            <Route path="franchise-model" element={<FranchiseModel />} />
+            <Route path="vle-hub" element={<VLEHub />} />
+            <Route path="emi-payment" element={<Payment />} />
           </Route>
         </Routes>
       </BrowserRouter>
