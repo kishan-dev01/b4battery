@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import NavBar from "../components/NavBar";
 import PageTransition from "../utils/PageTransition";
+import WhatsApp from "../components/ContactUs/WhatsApp";
 
 const LayoutContainer = styled.div`
   min-height: 100vh;
@@ -11,6 +12,7 @@ const LayoutContainer = styled.div`
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
 `;
 
 const MainContent = styled.main`
@@ -34,6 +36,7 @@ const Layout = () => {
         </MainContent>
 
         <Footer />
+        <WhatsApp phoneNumber="918176065235" />
       </LayoutContainer>
     </PageTransition>
   );
