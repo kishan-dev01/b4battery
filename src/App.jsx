@@ -14,6 +14,7 @@ import Careers from "./pages/Careers";
 import ContactUs from "./pages/ContactUs";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import BlogsPage from "./pages/BlogsPage";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
     <ThemeProvider>
       <GlobalStyles />
       <BrowserRouter>
+      <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="" element={<Home />} />
