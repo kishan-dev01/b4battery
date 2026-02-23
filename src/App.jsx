@@ -15,6 +15,7 @@ import ContactUs from "./pages/ContactUs";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import BlogsPage from "./pages/BlogsPage";
 import ScrollToTop from "./components/common/ScrollToTop";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   useEffect(() => {
@@ -25,12 +26,13 @@ function App() {
     <ThemeProvider>
       <GlobalStyles />
       <BrowserRouter>
-      <ScrollToTop/>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="" element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="products" element={<ProductsSection />} />
+            <Route path="product-details" element={<ProductDetailsPage />} />
             <Route path="franchise-model" element={<FranchiseModel />} />
             <Route path="vle-hub" element={<VLEHub />} />
             <Route path="emi-payment" element={<Payment />} />

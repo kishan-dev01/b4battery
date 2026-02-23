@@ -145,7 +145,7 @@ const Button = styled(motion.button)`
 const AboutSection = () => {
   const stats = [
     { number: "15+", label: "Years Experience" },
-    { number: "2.5K+", label: "Properties Managed" },
+    { number: "2.5K+", label: "Clients Managed" },
     { number: "98%", label: "Client Satisfaction" },
   ];
 
@@ -179,12 +179,14 @@ const AboutSection = () => {
             transition={{ delay: 0.1 }}
           >
             <p>
-              At Estate Mentor , we understand that managing properties in a
-              bustling city like Bangalore can be overwhelming. Whether you own
-              a single apartment, a villa, or a portfolio of commercial spaces,
-              we&apos;re here to make property management seamless, stress-free,
-              and efficient. We bring a fresh, personalized approach to property
-              management that puts you first.
+              At B4Battery, we understand that reliable energy is the backbone
+              of progress in today’s fast-moving world. Whether you need
+              dependable batteries for electric vehicles, renewable energy
+              systems, or industrial applications, we’re here to make power
+              storage efficient, safe, and hassle-free. We bring advanced
+              technology, uncompromising quality, and a customer-first approach
+              to deliver battery solutions you can trust — powering your journey
+              toward a smarter, more sustainable future.
             </p>
             {/* <p>
               We combine decades of industry expertise with cutting-edge

@@ -25,7 +25,7 @@ const NavBar = () => {
     { title: "VLE Hub", path: "/vle-hub" },
     { title: "EMI Payment", path: "/emi-payment" },
     { title: "Careers", path: "/careers" },
-    { title: "More", path: "/more" },
+    { title: "More", path: "#" },
   ];
 
   return (

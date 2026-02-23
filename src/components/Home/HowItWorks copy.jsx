@@ -137,15 +137,9 @@ const Subtitle = styled.p`
 
 const StepsContainer = styled.div`
   display: grid;
-  /* Reduced min-width to 220px to fit 4 columns */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem; /* Slightly reduced gap */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
   position: relative;
-
-  @media (max-width: 992px) {
-    /* Optional: Force 2x2 grid on tablets before going to 1 column */
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -155,7 +149,7 @@ const StepsContainer = styled.div`
 
 const StepCard = styled.div`
   background: var(--color-surface);
-  padding: 2rem 1.25rem;
+  padding: 2.5rem 2rem;
   border-radius: 20px;
   text-align: center;
   position: relative;
@@ -265,8 +259,8 @@ const StepDetail = styled.p`
 const ConnectorLine = styled.div`
   position: absolute;
   top: 50%;
-  right: -1rem;
-  width: 2rem;
+  right: -1.5rem;
+  width: 3rem;
   height: 2px;
   background: linear-gradient(90deg, var(--color-primary), transparent);
   transform: translateY(-50%);

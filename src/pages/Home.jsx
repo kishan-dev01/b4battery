@@ -15,6 +15,10 @@ import HowItWorks from "../components/Home/HowItWorks";
 import OurSegments from "../components/Home/OurSegments";
 import OurPartners from "../components/Home/OurPartners";
 import GetToKnowUs from "../components/Home/GetToKnowUs";
+import FAQSection from "../components/Home/FAQSection";
+import AboutUs from "../components/AboutUs/AboutUs";
+import ProductGrid from "../components/Home/ProductGrid";
+import ServiceSupport from "../components/Home/ServiceSupport";
 
 const Container = styled.div`
   /* border: 1px solid white; */
@@ -28,17 +32,20 @@ function Home() {
   return (
     <PageTransition>
       <HeroSection />
-      <HowItWorks />
-      <OurSegments />
+      <AboutSection />
       <StatsSection />
+      <ProductGrid />
+      {/* <OurSegments /> */}
+      <HowItWorks />
+      <ServiceSupport />
       <OurPartners />
       <GetToKnowUs />
+      <FAQSection />
       {/* <FeaturesSection /> */}
       {/* <WhyUsSection /> */}
       {/* <ConsultationCTA /> */}
       {/* <MissionSection /> */}
       {/* <TestimonialsSection /> */}
-      {/* <AboutSection /> */}
     </PageTransition>
   );
 }
