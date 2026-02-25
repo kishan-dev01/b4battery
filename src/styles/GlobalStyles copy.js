@@ -137,9 +137,9 @@ const GlobalStyles = createGlobalStyle`
    /* Dark Theme */
   /* Dark Theme */
 [data-theme="dark"] {
-  --color-primary: #00ff08;
-  --color-primary-light: #38a13d;
-  --color-primary-dark: #017507;
+  --color-primary: #4CAF50;
+  --color-primary-light: #66BB6A;
+  --color-primary-dark: #388E3C;
   --color-primary-rgb: 76, 175, 80;
   
   --color-secondary: #81C784;
