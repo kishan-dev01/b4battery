@@ -220,8 +220,6 @@ const AnimatedStatValue = ({ stat, delay }) => {
 };
 
 const StatsSection = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <SectionContainer>
       <ContentWrapper>
@@ -254,7 +252,6 @@ const StatsSection = () => {
         </StatsContainer>
 
         <RequestButton
-          onClick={() => setModalOpen(true)}
           initial={animations.fadeInScale.initial}
           whileInView={animations.fadeInScale.whileInView}
           viewport={{ once: true }}
@@ -264,7 +261,6 @@ const StatsSection = () => {
           Request More Details
         </RequestButton>
       </ContentWrapper>
-      <RequestModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </SectionContainer>
   );
 };
