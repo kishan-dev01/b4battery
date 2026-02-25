@@ -220,48 +220,57 @@ const AnimatedStatValue = ({ stat, delay }) => {
 };
 
 const StatsSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <SectionContainer>
-      <ContentWrapper>
-        <SectionHeader
-          initial={animations.revealText.initial}
-          whileInView={animations.revealText.whileInView}
-          viewport={{ once: true }}
-        >
-          Switching Batteries to <strong>B4 Big Battery</strong>
-        </SectionHeader>
+    <>
+      <SectionContainer>
+        <ContentWrapper>
+          <SectionHeader
+            initial={animations.revealText.initial}
+            whileInView={animations.revealText.whileInView}
+            viewport={{ once: true }}
+          >
+            Switching Batteries to <strong>B4 Big Battery</strong>
+          </SectionHeader>
 
-        <StatsContainer>
-          {stats.map((stat, index) => (
-            <StatCard
-              key={stat.label}
-              initial={animations.slideUp.initial}
-              whileInView={animations.slideUp.whileInView}
-              viewport={{ once: true }}
-              transition={{
-                ...animations.slideUp.transition,
-                delay: index * 0.2,
-              }}
-            >
-              <AnimatedStatValue stat={stat} delay={index * 200} />
-              <StatLabel>
-                <strong>{stat.label}</strong>
-              </StatLabel>
-            </StatCard>
-          ))}
-        </StatsContainer>
+          <StatsContainer>
+            {stats.map((stat, index) => (
+              <StatCard
+                key={stat.label}
+                initial={animations.slideUp.initial}
+                whileInView={animations.slideUp.whileInView}
+                viewport={{ once: true }}
+                transition={{
+                  ...animations.slideUp.transition,
+                  delay: index * 0.2,
+                }}
+              >
+                <AnimatedStatValue stat={stat} delay={index * 200} />
+                <StatLabel>
+                  <strong>{stat.label}</strong>
+                </StatLabel>
+              </StatCard>
+            ))}
+          </StatsContainer>
 
-        <RequestButton
-          initial={animations.fadeInScale.initial}
-          whileInView={animations.fadeInScale.whileInView}
-          viewport={{ once: true }}
-          transition={{ ...animations.fadeInScale.transition, delay: 0.6 }}
-          whileHover={animations.lift.whileHover}
-        >
-          Request More Details
-        </RequestButton>
-      </ContentWrapper>
-    </SectionContainer>
+          <RequestButton
+            initial={animations.fadeInScale.initial}
+            whileInView={animations.fadeInScale.whileInView}
+            viewport={{ once: true }}
+            transition={{ ...animations.fadeInScale.transition, delay: 0.6 }}
+            whileHover={animations.lift.whileHover}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Request More Details
+          </RequestButton>
+        </ContentWrapper>
+      </SectionContainer>
+      <RequestModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 };
 

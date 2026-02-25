@@ -1,693 +1,385 @@
-import { useState, useEffect, useCallback } from "react";
-import styled, { keyframes, css } from "styled-components";
-import { X, ChevronDown, CheckCircle, Send, Loader } from "lucide-react";
-import { createPortal } from "react-dom";
-
-const PRODUCTS = [
-  "EV Lithium Battery Pack",
-  "Solar Storage Battery",
-  "Industrial UPS Battery",
-  "Two-Wheeler Battery",
-  "Three-Wheeler Battery",
-  "Commercial Vehicle Battery",
-  "Other / General Inquiry",
-];
-
-const INITIAL_FORM = {
-  fullName: "",
-  phone: "",
-  email: "",
-  company: "",
-  product: "",
-  quantity: "",
-  message: "",
-};
+// src/components/modals/RequestModal.jsx
+import React, { useState } from "react";
+import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, CheckCircle } from "lucide-react";
 
 const RequestModal = ({ isOpen, onClose }) => {
-  const [form, setForm] = useState(INITIAL_FORM);
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // "idle" | "loading" | "success"
-  const [selectOpen, setSelectOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    product: "",
+    message: "",
+  });
 
-  // Lock body scroll when open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-      // Reset after close animation
-      setTimeout(() => {
-        setForm(INITIAL_FORM);
-        setErrors({});
-        setStatus("idle");
-        setSelectOpen(false);
-      }, 350);
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  // Close on Escape
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.key === "Escape" && isOpen) onClose();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [isOpen, onClose]);
-
-  const validate = () => {
-    const e = {};
-    if (!form.fullName.trim()) e.fullName = "Name is required";
-    if (
-      !form.phone.trim() ||
-      !/^[6-9]\d{9}$/.test(form.phone.replace(/\s/g, ""))
-    )
-      e.phone = "Enter a valid 10-digit mobile number";
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email))
-      e.email = "Enter a valid email address";
-    if (!form.product) e.product = "Please select a product";
-    if (!form.message.trim()) e.message = "Please add a brief message";
-    return e;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (field, value) => {
-    setForm((f) => ({ ...f, [field]: value }));
-    if (errors[field])
-      setErrors((e) => {
-        const n = { ...e };
-        delete n[field];
-        return n;
-      });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) {
-      setErrors(errs);
-      return;
-    }
+    setIsSubmitting(true);
 
-    setStatus("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 2000));
-    setStatus("success");
+    // Simulate an API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      // Reset form after a few seconds and close
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          product: "",
+          message: "",
+        });
+        onClose();
+      }, 3000);
+    }, 1500);
   };
 
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <Overlay
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <ModalContent
+            initial={{ y: 30, opacity: 0, scale: 0.98 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 20, opacity: 0, scale: 0.98 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <CloseButton onClick={onClose} aria-label="Close modal">
+              <X size={22} />
+            </CloseButton>
 
-  if (typeof document === "undefined") return null;
+            {isSuccess ? (
+              <SuccessState
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <CheckCircle size={56} color="var(--color-primary)" />
+                <SuccessTitle>Request Received!</SuccessTitle>
+                <SuccessMessage>
+                  Thank you, {formData.name}. Our team will be in touch shortly.
+                </SuccessMessage>
+              </SuccessState>
+            ) : (
+              <>
+                <ModalHeader>
+                  <ModalTitle>Request Details</ModalTitle>
+                  <ModalSubtitle>
+                    Fill out the form below and an energy specialist will reach
+                    out.
+                  </ModalSubtitle>
+                </ModalHeader>
 
-  return createPortal(
-    <Backdrop $open={isOpen} onClick={handleBackdropClick}>
-      <Modal
-        $open={isOpen}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Request Details"
-      >
-        {/* Close button */}
-        <CloseBtn onClick={onClose} aria-label="Close modal">
-          <X size={18} />
-        </CloseBtn>
-
-        {/* ── Success State ── */}
-        {status === "success" ? (
-          <SuccessPane>
-            <SuccessRing>
-              <CheckCircle size={38} />
-            </SuccessRing>
-            <SuccessTitle>Request Sent!</SuccessTitle>
-            <SuccessText>
-              Thank you, <strong>{form.fullName.split(" ")[0]}</strong>. We've
-              received your inquiry about <strong>{form.product}</strong> and
-              will get back to you within 24 hours.
-            </SuccessText>
-            <SuccessEmail>{form.email}</SuccessEmail>
-            <DoneBtn onClick={onClose}>Done</DoneBtn>
-          </SuccessPane>
-        ) : (
-          <>
-            {/* ── Header ── */}
-            <ModalHeader>
-              <HeaderAccent />
-              <HeaderLabel>Product Inquiry</HeaderLabel>
-              <ModalTitle>Request More Details</ModalTitle>
-              <ModalSub>
-                Fill in the form below and our team will reach out within 24
-                hours.
-              </ModalSub>
-            </ModalHeader>
-
-            {/* ── Form ── */}
-            <ModalBody>
-              <Form onSubmit={handleSubmit} noValidate>
-                <Row>
-                  <Field>
-                    <Label>
-                      Full Name <Req>*</Req>
-                    </Label>
+                <Form onSubmit={handleSubmit}>
+                  <FormGroup>
+                    <Label htmlFor="name">Full Name *</Label>
                     <Input
                       type="text"
-                      placeholder="Rahul Sharma"
-                      value={form.fullName}
-                      onChange={(e) => handleChange("fullName", e.target.value)}
-                      $error={!!errors.fullName}
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe"
                     />
-                    {errors.fullName && <ErrorMsg>{errors.fullName}</ErrorMsg>}
-                  </Field>
-                  <Field>
-                    <Label>
-                      Phone <Req>*</Req>
-                    </Label>
-                    <Input
-                      type="tel"
-                      placeholder="98765 43210"
-                      value={form.phone}
-                      onChange={(e) => handleChange("phone", e.target.value)}
-                      $error={!!errors.phone}
-                    />
-                    {errors.phone && <ErrorMsg>{errors.phone}</ErrorMsg>}
-                  </Field>
-                </Row>
+                  </FormGroup>
 
-                <Row>
-                  <Field>
-                    <Label>
-                      Email Address <Req>*</Req>
-                    </Label>
+                  <FormGroup>
+                    <Label htmlFor="email">Email Address *</Label>
                     <Input
                       type="email"
-                      placeholder="rahul@company.com"
-                      value={form.email}
-                      onChange={(e) => handleChange("email", e.target.value)}
-                      $error={!!errors.email}
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="john@example.com"
                     />
-                    {errors.email && <ErrorMsg>{errors.email}</ErrorMsg>}
-                  </Field>
-                  <Field>
-                    <Label>Company / Organisation</Label>
+                  </FormGroup>
+
+                  <FormGroup>
+                    <Label htmlFor="phone">Phone Number</Label>
                     <Input
-                      type="text"
-                      placeholder="Optional"
-                      value={form.company}
-                      onChange={(e) => handleChange("company", e.target.value)}
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 98765 43210"
                     />
-                  </Field>
-                </Row>
+                  </FormGroup>
 
-                <Row>
-                  <Field>
-                    <Label>
-                      Product of Interest <Req>*</Req>
-                    </Label>
-                    <SelectWrapper $error={!!errors.product}>
-                      <SelectTrigger
-                        type="button"
-                        onClick={() => setSelectOpen((o) => !o)}
-                        $hasValue={!!form.product}
-                        $error={!!errors.product}
-                      >
-                        <span>{form.product || "Select a product"}</span>
-                        <SelectIcon $open={selectOpen}>
-                          <ChevronDown size={16} />
-                        </SelectIcon>
-                      </SelectTrigger>
-                      {selectOpen && (
-                        <SelectDropdown>
-                          {PRODUCTS.map((p) => (
-                            <SelectOption
-                              key={p}
-                              type="button"
-                              $active={form.product === p}
-                              onClick={() => {
-                                handleChange("product", p);
-                                setSelectOpen(false);
-                              }}
-                            >
-                              {p}
-                              {form.product === p && <CheckCircle size={14} />}
-                            </SelectOption>
-                          ))}
-                        </SelectDropdown>
-                      )}
-                    </SelectWrapper>
-                    {errors.product && <ErrorMsg>{errors.product}</ErrorMsg>}
-                  </Field>
-                  <Field>
-                    <Label>Estimated Quantity</Label>
-                    <Input
-                      type="text"
-                      placeholder="e.g. 50 units"
-                      value={form.quantity}
-                      onChange={(e) => handleChange("quantity", e.target.value)}
-                    />
-                  </Field>
-                </Row>
+                  <FormGroup>
+                    <Label htmlFor="product">Product of Interest *</Label>
+                    <Select
+                      id="product"
+                      name="product"
+                      required
+                      value={formData.product}
+                      onChange={handleChange}
+                    >
+                      <option value="" disabled>
+                        Select a product...
+                      </option>
+                      <option value="Neuron Core EV-X">Neuron Core EV-X</option>
+                      <option value="EcoStore Home Max">
+                        EcoStore Home Max
+                      </option>
+                      <option value="FleetPro Commercial">
+                        FleetPro Commercial
+                      </option>
+                      <option value="SolarGrid Base">SolarGrid Base</option>
+                      <option value="General Inquiry">General Inquiry</option>
+                    </Select>
+                  </FormGroup>
 
-                <Field>
-                  <Label>
-                    Message / Requirements <Req>*</Req>
-                  </Label>
-                  <Textarea
-                    placeholder="Briefly describe your use case, application, or any specific requirements..."
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => handleChange("message", e.target.value)}
-                    $error={!!errors.message}
-                  />
-                  {errors.message && <ErrorMsg>{errors.message}</ErrorMsg>}
-                </Field>
+                  <FormGroup className="full-width">
+                    <Label htmlFor="message">Your Query / Requirements</Label>
+                    <TextArea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Share any specific requirements..."
+                    ></TextArea>
+                  </FormGroup>
 
-                <SubmitBtn type="submit" disabled={status === "loading"}>
-                  {status === "loading" ? (
-                    <>
-                      <SpinIcon>
-                        <Loader size={16} />
-                      </SpinIcon>
-                      Sending…
-                    </>
-                  ) : (
-                    <>
-                      <Send size={15} />
-                      Send Request
-                    </>
-                  )}
-                </SubmitBtn>
-              </Form>
-            </ModalBody>
-          </>
-        )}
-      </Modal>
-    </Backdrop>,
-    document.body,
+                  <SubmitButton
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="full-width"
+                  >
+                    {isSubmitting ? "Submitting..." : "Send Request"}
+                  </SubmitButton>
+                </Form>
+              </>
+            )}
+          </ModalContent>
+        </Overlay>
+      )}
+    </AnimatePresence>
   );
 };
 
 export default RequestModal;
 
-/* ─── Keyframes ──────────────────────────────── */
-const backdropIn = keyframes`
-  from { opacity: 0; }
-  to   { opacity: 1; }
-`;
-const backdropOut = keyframes`
-  from { opacity: 1; }
-  to   { opacity: 0; }
-`;
-const modalIn = keyframes`
-  from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)     scale(1); }
-`;
-const modalOut = keyframes`
-  from { opacity: 1; transform: translateY(0)     scale(1); }
-  to   { opacity: 0; transform: translateY(24px) scale(0.97); }
-`;
-const spin = keyframes`
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-`;
-const successPop = keyframes`
-  0%   { transform: scale(0.5); opacity: 0; }
-  70%  { transform: scale(1.1); }
-  100% { transform: scale(1);   opacity: 1; }
-`;
-
-/* ─── Backdrop ───────────────────────────────── */
-const Backdrop = styled.div`
+// Styled Components
+const Overlay = styled(motion.div)`
   position: fixed;
   inset: 0;
-  z-index: var(--z-modal);
-  background: var(--color-overlay);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: var(--z-modal, 1000);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  animation: ${({ $open }) => ($open ? backdropIn : backdropOut)} 0.3s ease
-    forwards;
 `;
 
-/* ─── Modal Shell ────────────────────────────── */
-const Modal = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 680px;
-  max-height: 90vh;
-  overflow-y: auto;
+const ModalContent = styled(motion.div)`
   background: var(--color-surface);
+  width: 100%;
+  max-width: 800px; /* Increased width to make it rectangular */
+  border-radius: 20px;
+  padding: 2rem; /* Reduced padding */
+  position: relative;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
   border: 1px solid var(--color-border-light);
-  border-radius: 24px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
-  animation: ${({ $open }) => ($open ? modalIn : modalOut)} 0.35s
-    cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  max-height: 95vh;
+  overflow-y: auto;
 
-  /* Custom scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
   &::-webkit-scrollbar-thumb {
     background: var(--color-border);
-    border-radius: 99px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 500px;
+    padding: 1.5rem;
   }
 `;
 
-/* ─── Close ──────────────────────────────────── */
-const CloseBtn = styled.button`
+const CloseButton = styled.button`
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  z-index: 2;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-bg);
+  background: transparent;
+  border: none;
   color: var(--color-text-muted);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
 
   &:hover {
-    background: var(--color-error);
-    border-color: var(--color-error);
-    color: #fff;
-    transform: rotate(90deg);
-  }
-`;
-
-/* ─── Header ─────────────────────────────────── */
-const ModalHeader = styled.div`
-  padding: 2rem 2rem 1.25rem;
-  position: relative;
-`;
-
-const HeaderAccent = styled.div`
-  width: 48px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  border-radius: 999px;
-  margin-bottom: 1rem;
-`;
-
-const HeaderLabel = styled.p`
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin: 0 0 0.35rem;
-`;
-
-const ModalTitle = styled.h2`
-  font-size: 1.65rem;
-  font-weight: 900;
-  color: var(--color-text);
-  margin: 0 0 0.4rem;
-  line-height: 1.2;
-`;
-
-const ModalSub = styled.p`
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  margin: 0;
-`;
-
-/* ─── Form Body ──────────────────────────────── */
-const ModalBody = styled.div`
-  padding: 0.25rem 2rem 2rem;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-`;
-
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-
-  @media (max-width: 540px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-`;
-
-const Label = styled.label`
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
-`;
-
-const Req = styled.span`
-  color: var(--color-error);
-  margin-left: 2px;
-`;
-
-const inputBase = css`
-  padding: 0.75rem 1rem;
-  border: 1.5px solid
-    ${({ $error }) => ($error ? "var(--color-error)" : "var(--color-border)")};
-  border-radius: var(--radius-lg);
-  font-size: 0.9rem;
-  color: var(--color-text);
-  background: var(--color-bg);
-  font-family: var(--font-family-primary);
-  transition: all 0.2s ease;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-    border-color: ${({ $error }) =>
-      $error ? "var(--color-error)" : "var(--color-primary)"};
-    box-shadow: 0 0 0 3px
-      ${({ $error }) =>
-        $error ? "rgba(244,67,54,0.1)" : "rgba(0,200,81,0.08)"};
-  }
-
-  &::placeholder {
-    color: var(--color-text-muted);
-    font-size: 0.875rem;
-  }
-`;
-
-const Input = styled.input`
-  ${inputBase}
-`;
-const Textarea = styled.textarea`
-  ${inputBase}
-  resize: vertical;
-  min-height: 100px;
-  line-height: 1.6;
-`;
-
-const ErrorMsg = styled.span`
-  font-size: 0.72rem;
-  color: var(--color-error);
-  font-weight: 500;
-`;
-
-/* ─── Custom Select ──────────────────────────── */
-const SelectWrapper = styled.div`
-  position: relative;
-`;
-
-const SelectTrigger = styled.button`
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1.5px solid
-    ${({ $error }) => ($error ? "var(--color-error)" : "var(--color-border)")};
-  border-radius: var(--radius-lg);
-  background: var(--color-bg);
-  color: ${({ $hasValue }) =>
-    $hasValue ? "var(--color-text)" : "var(--color-text-muted)"};
-  font-size: ${({ $hasValue }) => ($hasValue ? "0.9rem" : "0.875rem")};
-  font-family: var(--font-family-primary);
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 0.2s ease;
-
-  &:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(0, 200, 81, 0.08);
-  }
-`;
-
-const SelectIcon = styled.span`
-  color: var(--color-text-muted);
-  transition: transform 0.2s ease;
-  transform: ${({ $open }) => ($open ? "rotate(180deg)" : "rotate(0)")};
-  display: flex;
-`;
-
-const SelectDropdown = styled.div`
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  animation: ${modalIn} 0.2s ease forwards;
-`;
-
-const SelectOption = styled.button`
-  width: 100%;
-  padding: 0.65rem 1rem;
-  background: ${({ $active }) =>
-    $active ? "rgba(0,200,81,0.07)" : "transparent"};
-  color: ${({ $active }) =>
-    $active ? "var(--color-primary)" : "var(--color-text)"};
-  font-size: 0.875rem;
-  font-family: var(--font-family-primary);
-  font-weight: ${({ $active }) => ($active ? "600" : "400")};
-  text-align: left;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.15s ease;
-
-  &:hover {
-    background: var(--color-surface-secondary);
-  }
-`;
-
-/* ─── Submit Button ──────────────────────────── */
-const SubmitBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.95rem;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-primary-dark)
-  );
-  color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  margin-top: 0.25rem;
-  box-shadow: 0 4px 16px rgba(0, 200, 81, 0.3);
-  letter-spacing: 0.02em;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 200, 81, 0.4);
-  }
-
-  &:disabled {
-    opacity: 0.75;
-    cursor: not-allowed;
-  }
-`;
-
-const SpinIcon = styled.span`
-  display: flex;
-  animation: ${spin} 0.8s linear infinite;
-`;
-
-/* ─── Success State ──────────────────────────── */
-const SuccessPane = styled.div`
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1rem;
-`;
-
-const SuccessRing = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(0, 200, 81, 0.1);
-  border: 2px solid rgba(0, 200, 81, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary);
-  animation: ${successPop} 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-`;
-
-const SuccessTitle = styled.h3`
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: var(--color-text);
-  margin: 0;
-`;
-
-const SuccessText = styled.p`
-  font-size: 0.975rem;
-  color: var(--color-text-muted);
-  line-height: 1.65;
-  max-width: 400px;
-  margin: 0;
-
-  strong {
+    background: var(--color-bg-secondary);
     color: var(--color-text);
   }
 `;
 
-const SuccessEmail = styled.span`
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  background: rgba(0, 200, 81, 0.08);
-  border: 1px solid rgba(0, 200, 81, 0.2);
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
+const ModalHeader = styled.div`
+  margin-bottom: 1.5rem; /* Reduced margin */
+  padding-right: 2rem;
 `;
 
-const DoneBtn = styled.button`
-  margin-top: 0.5rem;
-  padding: 0.8rem 2.5rem;
+const ModalTitle = styled.h2`
+  font-size: 1.75rem; /* Slightly smaller */
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+`;
+
+const ModalSubtitle = styled.p`
+  color: var(--color-text-secondary);
+  margin: 0;
+  font-size: 0.95rem;
+`;
+
+const Form = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2-column horizontal layout */
+  gap: 1rem 1.5rem; /* Tighter vertical gap, wider horizontal gap */
+  align-items: start;
+
+  /* On mobile, stack everything into 1 column */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+`;
+
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; /* Tighter spacing between label and input */
+
+  /* Utility class to make elements span both columns */
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+`;
+
+const Label = styled.label`
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+`;
+
+/* Shared compact styles for inputs to keep things tight */
+const inputStyles = `
+  width: 100%;
+  padding: 0.65rem 1rem; /* Tighter vertical padding */
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 200, 81, 0.1);
+  }
+`;
+
+const Input = styled.input`
+  ${inputStyles}
+`;
+
+const Select = styled.select`
+  ${inputStyles}
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 50%;
+  background-size: 0.65rem auto;
+`;
+
+const TextArea = styled.textarea`
+  ${inputStyles}
+  resize: vertical;
+  min-height: 80px; /* Reduced minimum height */
+`;
+
+const SubmitButton = styled.button`
   background: linear-gradient(
     135deg,
-    var(--color-primary),
-    var(--color-primary-dark)
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
   );
-  color: #fff;
+  color: white;
+  padding: 0.85rem; /* Tighter button padding */
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 200, 81, 0.3);
-  transition: all 0.25s ease;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 15px rgba(0, 200, 81, 0.2);
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 200, 81, 0.4);
+  &.full-width {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
   }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 200, 81, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+`;
+
+const SuccessState = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0;
+  min-height: 250px; /* Compact success state */
+`;
+
+const SuccessTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 1rem 0 0.5rem;
+`;
+
+const SuccessMessage = styled.p`
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 400px;
+  margin: 0;
+  font-size: 0.95rem;
 `;
