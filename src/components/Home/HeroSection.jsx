@@ -255,7 +255,7 @@ const contentIn = keyframes`
 const Section = styled.section`
   position: relative;
   width: 100%;
-  min-height: 90vh;
+  min-height: 90dvh;
   overflow: hidden;
   background: #0a1628;
   display: flex;
