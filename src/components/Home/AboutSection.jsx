@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { PhoneCall } from "lucide-react";
 import { animations } from "../../config/animations";
+import { useNavigate } from "react-router-dom";
 
 const SectionContainer = styled.section`
   padding: var(--spacing-3xl) 0;
@@ -144,6 +145,8 @@ const AboutSection = () => {
     { number: "98%", label: "Client Satisfaction" },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <SectionContainer>
       <ContentWrapper>
@@ -212,6 +215,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
             whileHover={animations.grow.whileHover}
+            onClick={() => navigate("/contact-us")}
           >
             <PhoneCall size={20} />
             Talk to an Expert

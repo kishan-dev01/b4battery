@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { animations } from "../../config/animations";
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
+import RequestModal from "../modals/RequestModal";
 
 const SectionContainer = styled.section`
   padding: var(--spacing-3xl) 0;
@@ -109,6 +110,7 @@ const RequestButton = styled(motion.button)`
   margin-top: var(--spacing-xl);
 
   &:hover {
+    cursor: pointer;
     background-color: var(--color-primary);
     color: white;
     transform: translateY(-2px);
@@ -218,6 +220,8 @@ const AnimatedStatValue = ({ stat, delay }) => {
 };
 
 const StatsSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <SectionContainer>
       <ContentWrapper>
@@ -250,6 +254,7 @@ const StatsSection = () => {
         </StatsContainer>
 
         <RequestButton
+          onClick={() => setModalOpen(true)}
           initial={animations.fadeInScale.initial}
           whileInView={animations.fadeInScale.whileInView}
           viewport={{ once: true }}
@@ -259,6 +264,7 @@ const StatsSection = () => {
           Request More Details
         </RequestButton>
       </ContentWrapper>
+      <RequestModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </SectionContainer>
   );
 };

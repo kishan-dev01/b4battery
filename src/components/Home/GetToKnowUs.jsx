@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Animated from "../common/Animated";
+import { useNavigate } from "react-router-dom";
 
 const GetToKnowUs = () => {
+  const navigate = useNavigate();
   return (
     <Section>
       <Container>
@@ -17,7 +19,9 @@ const GetToKnowUs = () => {
           </Description>
 
           <Animated animation="slideUp" delay={0.3}>
-            <LearnMoreButton>Learn More About Us</LearnMoreButton>
+            <LearnMoreButton onClick={() => navigate("about-us")}>
+              Learn More About Us
+            </LearnMoreButton>
           </Animated>
         </Animated>
       </Container>
