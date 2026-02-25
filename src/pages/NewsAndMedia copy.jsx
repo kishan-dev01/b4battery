@@ -104,22 +104,23 @@ const NewsAndMedia = () => {
 
   return (
     <PageWrapper>
-      {/* --- Full-Width Hero Banner --- */}
-      <HeroBanner>
-        <HeroOverlay />
-        <Container>
-          <HeroContent>
-            <Animated animation="fadeInDown" duration={0.8}>
+      <Container>
+        {/* --- Header --- */}
+        <Animated animation="fadeInDown" duration={0.8}>
+          <PageHeader>
+            <HeaderIcon>
+              <Newspaper size={32} />
+            </HeaderIcon>
+            <TitleWrapper>
               <PageTitle>News & Media</PageTitle>
               <PageSubtitle>
                 Stay updated with the latest product launches, company
                 milestones, and industry insights from B4Battery.
               </PageSubtitle>
-            </Animated>
-          </HeroContent>
-        </Container>
-      </HeroBanner>
-      <Container>
+            </TitleWrapper>
+          </PageHeader>
+        </Animated>
+
         {/* --- Featured Article --- */}
         {featuredArticle && (
           <Animated animation="fadeIn" delay={0.2} duration={0.8}>
@@ -233,7 +234,7 @@ export default NewsAndMedia;
 // --- STYLED COMPONENTS ---
 
 const PageWrapper = styled.div`
-  padding: 0 0 6rem;
+  padding: 8rem 0 6rem;
   background: var(--color-bg);
   min-height: 100vh;
 `;
@@ -248,51 +249,49 @@ const Container = styled.div`
   }
 `;
 
-const HeroBanner = styled.div`
-  position: relative;
-  width: 100%;
-  height: 40vh; /* Creates a wide strip */
-  min-height: 350px;
-  max-height: 450px;
-  background: url("https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-    center/cover no-repeat; /* Add your image path here */
+const PageHeader = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 4rem;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border-light);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 `;
 
-const HeroOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  /* Dark gradient that fades left to right so text is easy to read */
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  z-index: 1;
+const HeaderIcon = styled.div`
+  width: 64px;
+  height: 64px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
 `;
 
-const HeroContent = styled.div`
-  position: relative;
-  z-index: 2;
+const TitleWrapper = styled.div`
   max-width: 700px;
 `;
 
 const PageTitle = styled.h1`
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  color: #ffffff; /* Forced to white for the dark overlay */
-  margin-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
 `;
 
 const PageSubtitle = styled.p`
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.9); /* Off-white for readability */
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
 `;
