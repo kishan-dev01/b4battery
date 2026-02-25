@@ -11,7 +11,7 @@ const TestimonialsPage = () => {
       company: "LogiTech Solutions",
       image: "/images/founder1.jpg",
       feedback:
-        "B4Battery has revolutionized our fleet operations. Their reliable battery solutions have reduced our downtime by 40% and significantly improved our operational efficiency.",
+        "B4 Big Battery has revolutionized our fleet operations. Their reliable battery solutions have reduced our downtime by 40% and significantly improved our operational efficiency.",
       rating: 5,
     },
     {
@@ -21,7 +21,7 @@ const TestimonialsPage = () => {
       company: "GreenTech Industries",
       image: "/images/founder2.jpg",
       feedback:
-        "The quality and performance of B4Battery products are exceptional. Their commitment to sustainable energy solutions aligns perfectly with our environmental goals.",
+        "The quality and performance of B4 Big Battery products are exceptional. Their commitment to sustainable energy solutions aligns perfectly with our environmental goals.",
       rating: 5,
     },
     {
@@ -31,7 +31,7 @@ const TestimonialsPage = () => {
       company: "PowerMax Energy",
       image: "/images/founder3.jpg",
       feedback:
-        "Outstanding customer service and technical support. B4Battery not only provides excellent products but also ensures seamless integration and ongoing maintenance.",
+        "Outstanding customer service and technical support. B4 Big Battery not only provides excellent products but also ensures seamless integration and ongoing maintenance.",
       rating: 5,
     },
   ];
@@ -43,8 +43,8 @@ const TestimonialsPage = () => {
           <Header>
             <SectionTitle>What Our Clients Say</SectionTitle>
             <SectionSubtitle>
-              Discover how B4Battery has transformed businesses across India
-              with reliable, sustainable energy solutions
+              Discover how B4 Big Battery has transformed businesses across
+              India with reliable, sustainable energy solutions
             </SectionSubtitle>
           </Header>
         </Animated>
@@ -88,7 +88,9 @@ const TestimonialsPage = () => {
 
         <Animated animation="slideUp" delay={0.8}>
           <BottomCTA>
-            <CTATitle>Ready to Experience the B4Battery Difference?</CTATitle>
+            <CTATitle>
+              Ready to Experience the B4 Big Battery Difference?
+            </CTATitle>
             <CTAButton>Get Started Today</CTAButton>
           </BottomCTA>
         </Animated>
