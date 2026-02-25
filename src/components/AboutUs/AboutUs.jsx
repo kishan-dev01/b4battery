@@ -115,7 +115,7 @@ const AboutUs = () => {
                 <Zap size={13} /> Our Story
               </HeroEyebrow>
               <HeroTitle>
-                About <GreenSpan>B4Battery</GreenSpan>
+                About <GreenSpan>B4 Big Battery</GreenSpan>
               </HeroTitle>
               <HeroSubtitle>Powering Innovation, Energizing Lives</HeroSubtitle>
               <HeroDescription>
@@ -150,7 +150,7 @@ const AboutUs = () => {
                 <SectionTitle>Our Story</SectionTitle>
                 <StoryText>
                   Founded with a vision to revolutionize the battery industry,
-                  B4Battery emerged from a simple belief: reliable energy
+                  B4 Big Battery emerged from a simple belief: reliable energy
                   storage should be accessible to everyone. What started as a
                   small venture has grown into a trusted name in battery
                   solutions, serving thousands of customers across India.
@@ -179,7 +179,7 @@ const AboutUs = () => {
 
             <Animated animation="slideRight" duration={0.8} delay={0.2}>
               <ImageWrapper>
-                <img src="/images/product6.jpeg" alt="B4Battery Story" />
+                <img src="/images/product6.jpeg" alt="B4 Big Battery Story" />
                 <ImageBadge>
                   <Battery size={18} />
                   <span>Est. 2013</span>
@@ -266,7 +266,7 @@ const AboutUs = () => {
               Our Core Values
             </SectionTitle>
             <SectionSubtitle>
-              The principles that guide everything we do at B4Battery
+              The principles that guide everything we do at B4 Big Battery
             </SectionSubtitle>
           </Animated>
           <ValuesGrid>
@@ -301,8 +301,8 @@ const AboutUs = () => {
               </CtaEyebrow>
               <CtaTitle>Ready to Power Your Future?</CtaTitle>
               <CtaDescription>
-                Join thousands of satisfied customers who trust B4Battery for
-                their energy needs.
+                Join thousands of satisfied customers who trust B4 Big Battery
+                for their energy needs.
               </CtaDescription>
               <CtaButtons>
                 <PrimaryButton onClick={() => navigate("/products")}>
@@ -454,9 +454,9 @@ const HeroSubtitle = styled.p`
 const HeroDescription = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
-  max-width: 520px;
+  max-width: 550px;
   line-height: 1.65;
-  margin: 0;
+  margin: auto;
 `;
 
 const HeroCta = styled.a`

@@ -67,7 +67,7 @@ const ServiceSupport = () => {
           <CTAWrapper>
             <DownloadButton href="/assets/NEPL-Service-Policy.pdf" download>
               <Download size={20} />
-              Download B4 Service Policy
+              Download B4 Big Battery Service Policy
             </DownloadButton>
           </CTAWrapper>
         </Animated>

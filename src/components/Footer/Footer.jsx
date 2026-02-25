@@ -139,7 +139,9 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <BottomBar>
-        <div>© {new Date().getFullYear()} B4Battery. All rights reserved.</div>
+        <div>
+          © {new Date().getFullYear()} B4 Big Battery. All rights reserved.
+        </div>
         <div style={{ display: "flex", gap: "1rem" }}>
           <QuickLink href="/privacy">Privacy Policy</QuickLink>
           {" | "}

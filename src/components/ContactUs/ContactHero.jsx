@@ -17,7 +17,7 @@ const ContactHero = () => {
         <BannerContent>
           <BannerEyebrow>
             <Zap size={14} />
-            B4 Battery Support
+            B4 Big Battery Support
           </BannerEyebrow>
           <BannerHeading>
             Let's <Highlight>Power</Highlight> Up
@@ -112,7 +112,7 @@ const ContactHero = () => {
                     </IconWrapper>
                     <ContactText>
                       <ContactLabel>Email Us</ContactLabel>
-                      <ContactValue>info@b4battery.com</ContactValue>
+                      <ContactValue>info@b4bigbattery.com</ContactValue>
                     </ContactText>
                   </ContactItem>
 
@@ -122,7 +122,7 @@ const ContactHero = () => {
                     </IconWrapper>
                     <ContactText>
                       <ContactLabel>Visit Us</ContactLabel>
-                      <ContactValue>Electronic City, Bangalore</ContactValue>
+                      <ContactValue>Electronic City, Lucknow</ContactValue>
                     </ContactText>
                   </ContactItem>
 
@@ -144,7 +144,7 @@ const ContactHero = () => {
                     <span>
                       Electronic City Phase 1,
                       <br />
-                      Bangalore – 560100
+                      Lucknow – 560100
                     </span>
                   </MapPlaceholder>
                 </MapCard>

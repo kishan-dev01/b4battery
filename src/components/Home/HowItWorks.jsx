@@ -35,7 +35,7 @@ const HowItWorks = () => {
     <Section>
       <Container>
         <Animated animation="fadeIn" duration={0.8}>
-          <SectionTitle>How B4Battery Works</SectionTitle>
+          <SectionTitle>How B4 Big Battery Works</SectionTitle>
           <Subtitle>
             Our proven 4-step process ensures maximum battery performance and
             lifecycle

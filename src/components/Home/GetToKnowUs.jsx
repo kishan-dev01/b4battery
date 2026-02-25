@@ -8,9 +8,9 @@ const GetToKnowUs = () => {
         <Animated animation="fadeIn" duration={0.8}>
           <SectionTitle>Get to Know Us</SectionTitle>
           <Description>
-            At B4Battery, we're passionate about powering a sustainable future
-            through innovative battery solutions. With years of expertise in
-            energy storage technology, we deliver reliable, high-performance
+            At B4 Big Battery, we're passionate about powering a sustainable
+            future through innovative battery solutions. With years of expertise
+            in energy storage technology, we deliver reliable, high-performance
             batteries that keep your world moving. From three-wheelers to home
             inverters, we're committed to providing clean energy solutions that
             make a difference.

@@ -8,7 +8,7 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "What makes B4Battery refurbished batteries different?",
+      question: "What makes B4 Big Battery refurbished batteries different?",
       answer:
         "We utilize an industry-leading, proprietary 4-step process—Evaluate, Underwrite, Refurbish, and Re-deploy. This ensures every single battery meets strict OEM standards for capacity, performance, and thermal safety before it ever reaches you.",
     },
@@ -25,7 +25,7 @@ const FAQSection = () => {
     {
       question: "Is your refurbishing process environmentally friendly?",
       answer:
-        "Sustainability is at the core of B4Battery. By extending the lifecycle of existing energy cells, we actively reduce e-waste and the need for new raw material mining, significantly lowering the overall carbon footprint of your energy consumption.",
+        "Sustainability is at the core of B4 Big Battery. By extending the lifecycle of existing energy cells, we actively reduce e-waste and the need for new raw material mining, significantly lowering the overall carbon footprint of your energy consumption.",
     },
   ];
 

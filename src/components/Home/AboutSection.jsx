@@ -175,9 +175,9 @@ const AboutSection = () => {
             transition={{ delay: 0.1 }}
           >
             <p>
-              At B4Battery, we understand that reliable energy is the backbone
-              of progress in today’s fast-moving world. Whether you need
-              dependable batteries for electric vehicles, renewable energy
+              At B4 Big Battery, we understand that reliable energy is the
+              backbone of progress in today’s fast-moving world. Whether you
+              need dependable batteries for electric vehicles, renewable energy
               systems, or industrial applications, we’re here to make power
               storage efficient, safe, and hassle-free. We bring advanced
               technology, uncompromising quality, and a customer-first approach

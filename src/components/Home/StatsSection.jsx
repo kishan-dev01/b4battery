@@ -168,7 +168,7 @@ const useCounter = (end, duration = 2000, delay = 0) => {
       const easedProgress = easeOutExpo(progress);
 
       setCount(
-        Math.floor(startValue + (endValue - startValue) * easedProgress)
+        Math.floor(startValue + (endValue - startValue) * easedProgress),
       );
 
       if (progress < 1) {
@@ -226,7 +226,7 @@ const StatsSection = () => {
           whileInView={animations.revealText.whileInView}
           viewport={{ once: true }}
         >
-          Switching Batteries to <strong>B4Battery</strong>
+          Switching Batteries to <strong>B4 Big Battery</strong>
         </SectionHeader>
 
         <StatsContainer>
