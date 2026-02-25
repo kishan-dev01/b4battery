@@ -50,7 +50,7 @@ const HeroSection = () => {
       <Animated animation="slideRight" duration={0.8} delay={0.2}>
         <ImageWrapper>
           {/* Replace with your actual image */}
-          <img src="/hero.png" alt="B4Battery Products" />
+          <img src="/images/product1.jpeg" alt="B4Battery Products" />
         </ImageWrapper>
       </Animated>
     </Section>
@@ -272,7 +272,7 @@ const ImageWrapper = styled.div`
     height: auto;
     max-height: 500px;
     object-fit: contain;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 

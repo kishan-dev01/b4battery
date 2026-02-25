@@ -7,9 +7,9 @@ import Animated from "../common/Animated";
 const defaultProducts = [
   {
     id: 1,
-    name: "Neuron Core EV-X",
+    name: "NE 3W 84100",
     category: "Electric Vehicle",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product1.jpeg",
     description:
       "High-performance lithium-ion pack designed for maximum range and rapid charging capabilities.",
     voltage: "72V",
@@ -20,7 +20,7 @@ const defaultProducts = [
     id: 2,
     name: "EcoStore Home Max",
     category: "Residential Storage",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product2.jpeg",
     description:
       "Reliable home backup power solution integrating seamlessly with residential solar grids.",
     voltage: "48V",
@@ -31,7 +31,7 @@ const defaultProducts = [
     id: 3,
     name: "FleetPro Commercial",
     category: "Commercial Fleet",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product3.jpeg",
     description:
       "Heavy-duty power cells engineered for commercial logistics and transport vehicles.",
     voltage: "96V",
@@ -40,9 +40,9 @@ const defaultProducts = [
   },
   {
     id: 4,
-    name: "Neuron Lite Commute",
+    name: "B4 Lite Commute",
     category: "E-Bikes & Scooters",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product4.jpeg",
     description:
       "Lightweight, ultra-compact battery for daily urban commuting and micro-mobility.",
     voltage: "36V",
@@ -53,7 +53,7 @@ const defaultProducts = [
     id: 5,
     name: "AgriPower Tract-Cell",
     category: "Agricultural",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product5.jpeg",
     description:
       "Ruggedized power solution built to withstand extreme environmental conditions.",
     voltage: "48V",
@@ -64,7 +64,7 @@ const defaultProducts = [
     id: 6,
     name: "SolarGrid Base",
     category: "Industrial Storage",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product6.jpeg",
     description:
       "Scalable energy storage blocks for large-scale solar farm integrations.",
     voltage: "120V",

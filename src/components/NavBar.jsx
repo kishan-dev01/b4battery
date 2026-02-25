@@ -32,10 +32,11 @@ const NavBar = () => {
     <Nav>
       <NavContainer>
         <LogoContainer to="/">
-          <LogoIcon size={31} />
+          {/* <LogoIcon size={31} />
           <LogoText>
             B4<span>Battery</span>
-          </LogoText>
+          </LogoText> */}
+          <LogoImage src="/images/logo.jpeg" />
         </LogoContainer>
 
         <NavLinks isOpen={isOpen}>
@@ -115,6 +116,11 @@ const NavContainer = styled.div`
 const LogoContainer = styled(Link)`
   display: flex;
   gap: 0.5rem;
+`;
+
+const LogoImage = styled.img`
+  height: 40px;
+  width: auto;
 `;
 
 const LogoIcon = styled(Zap)`

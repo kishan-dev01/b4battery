@@ -26,15 +26,10 @@ const ContentWrapper = styled.div`
 
 const ImageContainer = styled(motion.div)`
   position: relative;
-  border-radius: var(--radius-lg);
+  /* border-radius: var(--radius-lg); */
   overflow: hidden;
   aspect-ratio: 4/3;
-  /* background: linear-gradient(
-    135deg,
-    var(--color-primary-light) 0%,
-    var(--color-primary) 100%
-  ); */
-  box-shadow: var(--shadow-lg);
+  /* box-shadow: var(--shadow-lg); */
 
   &::before {
     content: "";
@@ -158,8 +153,9 @@ const AboutSection = () => {
           viewport={{ once: true }}
         >
           <img
-            src="/api/placeholder/home-info-bg.jpg"
-            alt="About EstateMentor"
+            src="/images/image1.jpeg"
+            style={{ objectFit: "contain" }}
+            alt="About B4 Big Battery"
           />
         </ImageContainer>
 
