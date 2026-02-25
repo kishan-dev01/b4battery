@@ -7,9 +7,9 @@ import Animated from "../components/common/Animated";
 const productsData = [
   {
     id: 1,
-    name: "Neuron Core EV-X",
+    name: "B4 Core EV-X",
     category: "Electric Vehicle",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product1.jpeg",
     description:
       "Our flagship high-performance lithium-ion power pack engineered specifically for modern electric vehicles. Delivers sustained, reliable power with advanced thermal dispersion.",
     highlights: ["72V Voltage", "40Ah Capacity", "Active Cooling"],
@@ -20,7 +20,7 @@ const productsData = [
     id: 2,
     name: "EcoStore Home Max",
     category: "Residential Storage",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product2.jpeg",
     description:
       "Reliable home backup power solution integrating seamlessly with residential solar grids for 24/7 energy independence.",
     highlights: ["48V System", "100Ah Capacity", "Solar Ready"],
@@ -30,7 +30,7 @@ const productsData = [
     id: 3,
     name: "FleetPro Commercial",
     category: "Commercial Fleet",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product3.jpeg",
     description:
       "Heavy-duty power cells engineered for high-uptime commercial logistics and transport vehicles.",
     highlights: ["96V Voltage", "200Ah Capacity", "Fast Charge"],
@@ -38,9 +38,9 @@ const productsData = [
   },
   {
     id: 4,
-    name: "Neuron Lite Commute",
+    name: "B4 Lite Commute",
     category: "Micro-Mobility",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product4.jpeg",
     description:
       "Lightweight, ultra-compact battery optimized for daily urban commuting on e-bikes and scooters.",
     highlights: ["36V Voltage", "15Ah Capacity", "Ultra-Light"],
@@ -50,7 +50,7 @@ const productsData = [
     id: 5,
     name: "AgriPower Tract-Cell",
     category: "Agricultural",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product5.jpeg",
     description:
       "Ruggedized, dust-and-water-resistant power solution built to withstand extreme environmental conditions on the farm.",
     highlights: ["IP67 Rated", "150Ah Capacity", "Shockproof"],
@@ -60,7 +60,7 @@ const productsData = [
     id: 6,
     name: "SolarGrid Base",
     category: "Industrial Storage",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product6.jpeg",
     description:
       "Scalable energy storage blocks designed for large-scale solar farm integrations and grid stabilization.",
     highlights: ["120V Voltage", "300Ah Capacity", "Modular"],
@@ -70,7 +70,7 @@ const productsData = [
     id: 7,
     name: "MarineVolt Pro",
     category: "Marine Application",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product7.jpeg",
     description:
       "Corrosion-resistant marine battery pack offering dependable start and deep-cycle performance for boats.",
     highlights: ["Saltwater Safe", "Deep Cycle", "12V/24V Modes"],
@@ -80,7 +80,27 @@ const productsData = [
     id: 8,
     name: "AeroCell Drone-X",
     category: "Aviation/UAV",
-    image: "/images/energy-storage.jpg",
+    image: "/images/product8.jpeg",
+    description:
+      "High discharge rate lithium polymer cells designed for extended flight times in commercial drones.",
+    highlights: ["High C-Rate", "Lightweight", "Smart BMS"],
+    icon: <Zap size={20} />,
+  },
+  {
+    id: 9,
+    name: "AeroCell Drone-X",
+    category: "Aviation/UAV",
+    image: "/images/product9.jpeg",
+    description:
+      "High discharge rate lithium polymer cells designed for extended flight times in commercial drones.",
+    highlights: ["High C-Rate", "Lightweight", "Smart BMS"],
+    icon: <Zap size={20} />,
+  },
+  {
+    id: 10,
+    name: "AeroCell Drone-X",
+    category: "Aviation/UAV",
+    image: "/images/product10.jpeg",
     description:
       "High discharge rate lithium polymer cells designed for extended flight times in commercial drones.",
     highlights: ["High C-Rate", "Lightweight", "Smart BMS"],

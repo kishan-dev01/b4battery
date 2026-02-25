@@ -16,6 +16,7 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import BlogsPage from "./pages/BlogsPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import NewsAndMedia from "./pages/NewsAndMedia";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
             <Route path="products" element={<ProductsSection />} />
             <Route path="product-details" element={<ProductDetailsPage />} />
             <Route path="franchise-model" element={<FranchiseModel />} />
+            <Route path="news" element={<NewsAndMedia />} />
             <Route path="vle-hub" element={<VLEHub />} />
             <Route path="emi-payment" element={<Payment />} />
             <Route path="careers" element={<Careers />} />

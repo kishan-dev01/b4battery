@@ -20,8 +20,9 @@ const Footer = () => {
         {/* About Section */}
         <FooterSection>
           <Logo>
-            <Zap size={24} style={{ marginRight: "0.5rem" }} />
-            B4<span>Battery</span>
+            {/* <Zap size={24} style={{ marginRight: "0.5rem" }} />
+            B4<span>Battery</span> */}
+            <LogoImage src="/images/logo.jpeg" alt="B4 Battery Logo" />
           </Logo>
           <Description>
             Your trusted partner in innovative battery solutions. We provide
@@ -192,6 +193,10 @@ const Logo = styled.div`
   span {
     color: var(--color-primary);
   }
+`;
+const LogoImage = styled.img`
+  height: 50px;
+  width: auto;
 `;
 
 const SectionTitle = styled.h3`

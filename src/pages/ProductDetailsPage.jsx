@@ -18,7 +18,7 @@ const productData = {
   category: "Electric Vehicle Battery",
   description:
     "The B4 Core EV-X is a high-performance lithium-ion power pack engineered specifically for modern electric vehicles. Featuring advanced thermal management and an industry-leading cycle life, it delivers sustained, reliable power across extreme environmental conditions.",
-  image: "/images/energy-storage.jpg",
+  image: "/images/product1.jpeg",
   price: "Request Quote",
   status: "In Stock",
   quickSpecs: [
@@ -196,7 +196,7 @@ const ImageContainer = styled.div`
     var(--color-surface) 0%,
     var(--color-surface-secondary) 100%
   );
-  border-radius: 24px;
+  /* border-radius: 24px; */
   border: 1px solid var(--color-border-light);
   display: flex;
   align-items: center;
@@ -206,9 +206,9 @@ const ImageContainer = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.5s ease;
 
   &:hover {
