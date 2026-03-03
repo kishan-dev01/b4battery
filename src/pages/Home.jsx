@@ -19,6 +19,12 @@ import FAQSection from "../components/Home/FAQSection";
 import AboutUs from "../components/AboutUs/AboutUs";
 import ProductGrid from "../components/Home/ProductGrid";
 import ServiceSupport from "../components/Home/ServiceSupport";
+import ProductVerticalsSection from "../components/Home/ProductVerticalsSection";
+import LithiumAdvantage from "../components/Home/LithiumAdvantage";
+import SmartTechnology from "../components/Home/SmartTechnology";
+import BaaSSection from "../components/Home/BaaSSection";
+import SustainabilitySection from "../components/Home/SustainabilitySection";
+import IndustriesSection from "../components/Home/IndustriesSection";
 
 const Container = styled.div`
   /* border: 1px solid white; */
@@ -33,12 +39,18 @@ function Home() {
     <PageTransition>
       <HeroSection />
       <AboutSection />
-      <StatsSection />
+      <ProductVerticalsSection />
+      <LithiumAdvantage />
       <ProductGrid />
+      <SmartTechnology />
+      <BaaSSection />
+      <SustainabilitySection />
+      <IndustriesSection />
+      {/* <StatsSection /> */}
       {/* <OurSegments /> */}
-      <HowItWorks />
+      {/* <HowItWorks /> */}
       <ServiceSupport />
-      <OurPartners />
+      {/* <OurPartners /> */}
       <GetToKnowUs />
       <FAQSection />
       {/* <FeaturesSection /> */}

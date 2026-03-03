@@ -17,6 +17,10 @@ import BlogsPage from "./pages/BlogsPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NewsAndMedia from "./pages/NewsAndMedia";
+import Technology from "./pages/Technology";
+import NotFound from "./components/common/NotFound";
+import Solutions from "./pages/Solutions";
+import Sustainability from "./pages/Sustainability";
 
 function App() {
   useEffect(() => {
@@ -33,6 +37,9 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="about-us" element={<About />} />
             <Route path="products" element={<ProductsSection />} />
+            <Route path="technology" element={<Technology />} />
+            <Route path="solutions" element={<Solutions />} />
+            <Route path="sustainability" element={<Sustainability />} />
             <Route path="product-details" element={<ProductDetailsPage />} />
             <Route path="franchise-model" element={<FranchiseModel />} />
             <Route path="news" element={<NewsAndMedia />} />
@@ -42,6 +49,9 @@ function App() {
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="testimonials" element={<TestimonialsPage />} />
             <Route path="blogs" element={<BlogsPage />} />
+
+            {/* fallback to undefined routes */}
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
