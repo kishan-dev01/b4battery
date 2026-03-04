@@ -30,7 +30,7 @@ import SolarPanels from "./pages/products/SolarPanels";
 import SolarBatteries from "./pages/products/SolarBatteries";
 import SolarInverters from "./pages/products/SolarInverters";
 import HomeUPS from "./pages/products/HomeUPS";
-import HiCapacityUPS from "./pages/products/HiCapacityUps";
+import HiCapacityUPS from "./pages/products/HiCapacityUPS";
 
 function App() {
   useEffect(() => {
