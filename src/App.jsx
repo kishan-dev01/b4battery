@@ -21,6 +21,11 @@ import Technology from "./pages/Technology";
 import NotFound from "./components/common/NotFound";
 import Solutions from "./pages/Solutions";
 import Sustainability from "./pages/Sustainability";
+import EvLithiumBatteries from "./pages/products/EvLithiumBatteries";
+import BatterySwappingBaaS from "./pages/products/BatterySwappingBaaS";
+import EForkliftBatteries from "./pages/products/EForkliftBatteries";
+import ECleaningMachineBatteries from "./pages/products/ECleaningMachineBatteries";
+import EDroneBatteries from "./pages/products/EDroneBatteries";
 
 function App() {
   useEffect(() => {
@@ -49,6 +54,25 @@ function App() {
             <Route path="contact-us" element={<ContactUs />} />
             <Route path="testimonials" element={<TestimonialsPage />} />
             <Route path="blogs" element={<BlogsPage />} />
+
+            {/* Product Pages */}
+            <Route
+              path="products/ev-lithium"
+              element={<EvLithiumBatteries />}
+            />
+            <Route
+              path="products/battery-swapping"
+              element={<BatterySwappingBaaS />}
+            />
+            <Route
+              path="products/e-forklift"
+              element={<EForkliftBatteries />}
+            />
+            <Route
+              path="products/e-cleaning"
+              element={<ECleaningMachineBatteries />}
+            />
+            <Route path="products/e-drone" element={<EDroneBatteries />} />
 
             {/* fallback to undefined routes */}
             <Route path="*" element={<NotFound />} />
