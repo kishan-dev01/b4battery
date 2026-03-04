@@ -26,6 +26,11 @@ import BatterySwappingBaaS from "./pages/products/BatterySwappingBaaS";
 import EForkliftBatteries from "./pages/products/EForkliftBatteries";
 import ECleaningMachineBatteries from "./pages/products/ECleaningMachineBatteries";
 import EDroneBatteries from "./pages/products/EDroneBatteries";
+import SolarPanels from "./pages/products/SolarPanels";
+import SolarBatteries from "./pages/products/SolarBatteries";
+import SolarInverters from "./pages/products/SolarInverters";
+import HomeUPS from "./pages/products/HomeUPS";
+import HiCapacityUPS from "./pages/products/HiCapacityUps";
 
 function App() {
   useEffect(() => {
@@ -73,6 +78,20 @@ function App() {
               element={<ECleaningMachineBatteries />}
             />
             <Route path="products/e-drone" element={<EDroneBatteries />} />
+            <Route path="products/solar-panels" element={<SolarPanels />} />
+            <Route
+              path="products/solar-batteries"
+              element={<SolarBatteries />}
+            />
+            <Route
+              path="products/solar-inverters"
+              element={<SolarInverters />}
+            />
+            <Route path="products/home-ups" element={<HomeUPS />} />
+            <Route
+              path="products/hi-capacity-ups"
+              element={<HiCapacityUPS />}
+            />
 
             {/* fallback to undefined routes */}
             <Route path="*" element={<NotFound />} />
