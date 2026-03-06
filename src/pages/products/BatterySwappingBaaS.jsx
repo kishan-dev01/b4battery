@@ -91,7 +91,7 @@ const BatterySwappingBaaS = () => {
                 <HeroImageFrame>
                   <HeroImageGlow />
                   <img
-                    src="/images/products/battery-swapping.png"
+                    src="/images/product1.jpeg"
                     alt="EV Battery Swapping Station"
                     loading="lazy"
                   />
@@ -356,7 +356,7 @@ const PageWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 24px;
 
@@ -452,13 +452,13 @@ const HeroImageArea = styled.div`
 const HeroImageFrame = styled.div`
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 500px;
   animation: ${floatAnim} 6s ease-in-out infinite;
 
   img {
     width: 100%;
     height: auto;
-    max-height: 420px;
+    max-height: 500px;
     object-fit: contain;
     position: relative;
     z-index: 2;

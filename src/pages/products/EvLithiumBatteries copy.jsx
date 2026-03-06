@@ -137,7 +137,7 @@ const EVLithiumBatteries = () => {
                 <HeroImageFrame>
                   <HeroImageGlow />
                   <img
-                    src="/images/product6.jpeg"
+                    src="/images/products/ev-lithium-battery.png"
                     alt="EV Lithium Battery"
                     loading="lazy"
                   />
@@ -415,7 +415,7 @@ const PageWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 
@@ -478,10 +478,10 @@ const HeroSection = styled.section`
   position: relative;
   overflow: hidden;
   background: linear-gradient(140deg, #080e1a 0%, #0b1e12 55%, #080e1a 100%);
-  padding: 100px 0;
+  padding: 130px 0 100px;
 
   @media (max-width: 768px) {
-    padding: 120px 0 88px;
+    padding: 110px 0 72px;
   }
 `;
 
@@ -515,7 +515,7 @@ const HeroGlow = styled.div`
 const HeroGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  gap: 56px;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -529,8 +529,7 @@ const HeroGrid = styled.div`
 const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  /* border: 2px solid white; */
+  gap: 1.1rem;
 
   @media (max-width: 900px) {
     order: 2;
@@ -543,10 +542,9 @@ const HeroHeading = styled.h1`
   font-size: clamp(2.75rem, 6vw, 4.25rem);
   font-weight: 900;
   color: #fff;
-  line-height: 1.1;
-  letter-spacing: 5px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   margin: 0;
-  margin-bottom: 1.5rem;
 `;
 
 const HeroAccent = styled.span`
@@ -562,23 +560,21 @@ const HeroSubheading = styled.p`
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.6;
   margin: 0;
-  margin-bottom: 1rem;
-  /* max-width: 440px; */
+  max-width: 480px;
 `;
 
 const HeroDescription = styled.p`
   font-size: 0.925rem;
   color: rgba(255, 255, 255, 0.38);
   line-height: 1.7;
-  margin: 0.25rem 0 0;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  max-width: 460px;
 `;
 
 const HeroCTARow = styled.div`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 0.5rem;
 
   @media (max-width: 900px) {
     justify-content: center;
@@ -646,7 +642,7 @@ const HeroImageFrame = styled.div`
   img {
     width: 100%;
     height: auto;
-    max-height: 480px;
+    max-height: 420px;
     object-fit: contain;
     position: relative;
     z-index: 2;
