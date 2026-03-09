@@ -29,7 +29,7 @@ const LogisticsWarehousing = () => {
               <ImageSide $order={1}>
                 <ImageWrapper>
                   <BlockImage
-                    src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1000&auto=format&fit=crop"
+                    src="/images/product9.jpeg"
                     alt="Industrial Warehouse Forklift"
                     loading="lazy"
                   />
@@ -94,7 +94,7 @@ const LogisticsWarehousing = () => {
               <ImageSide $order={2}>
                 <ImageWrapper>
                   <BlockImage
-                    src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop"
+                    src="/images/product8.jpeg"
                     alt="Industrial Floor Scrubber Machine"
                     loading="lazy"
                   />

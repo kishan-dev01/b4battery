@@ -30,7 +30,9 @@ const SLIDES = [
     description:
       "Purpose-built EV battery packs delivering higher range, faster charge cycles, and longer lifespan for every electric journey.",
     cta: "Explore EV Range",
+    ctaLink: "/products/ev-lithium",
     ctaSecondary: "View Specs",
+    ctaSecondaryLink: "/technology",
     accent: "#2196F3",
     overlay:
       "linear-gradient(100deg, rgba(5,15,35,0.92) 0%, rgba(5,15,35,0.65) 55%, rgba(5,15,35,0.25) 100%)",

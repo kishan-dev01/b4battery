@@ -5,7 +5,7 @@ function About() {
   return (
     <>
       <AboutUs />
-      <FoundersSection />
+      {/* <FoundersSection /> */}
     </>
   );
 }

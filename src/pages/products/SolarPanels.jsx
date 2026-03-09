@@ -80,7 +80,7 @@ const environmentCards = [
   {
     title: "Utility-Scale Solar Farms",
     image:
-      "https://images.unsplash.com/photo-1592289139366-07f90fb785a4?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1629726797843-618688139f5a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     icon: <Sun size={20} />,
   },
 ];
@@ -118,7 +118,7 @@ const SolarPanels = () => {
               <Animated animation="fadeIn" delay={0.2} duration={0.8}>
                 <ImageWrapper>
                   <img
-                    src="https://images.unsplash.com/photo-1509391366360-1284d7cb0628?q=80&w=1200&auto=format&fit=crop"
+                    src="https://plus.unsplash.com/premium_photo-1679917152412-552ae51628f0?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Solar farm at sunrise"
                     loading="lazy"
                   />

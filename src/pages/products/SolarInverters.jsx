@@ -123,7 +123,7 @@ const SolarInverters = () => {
               <Animated animation="fadeIn" delay={0.2} duration={0.8}>
                 <ImageWrapper>
                   <img
-                    src="https://images.unsplash.com/photo-1620241608701-94ef138c7ea9?q=80&w=1000&auto=format&fit=crop"
+                    src="https://plus.unsplash.com/premium_photo-1671808063085-c307723bfa2f?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Solar Inverter System Installation"
                     loading="lazy"
                   />
@@ -205,7 +205,7 @@ const SolarInverters = () => {
               <Animated animation="fadeInRight" duration={0.8}>
                 <ImageWrapper className="tall">
                   <img
-                    src="https://images.unsplash.com/photo-1558384855-32bc8bc2385b?q=80&w=1000&auto=format&fit=crop"
+                    src="https://plus.unsplash.com/premium_photo-1682145601250-face8160cdc8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Solar power monitoring display"
                     loading="lazy"
                   />

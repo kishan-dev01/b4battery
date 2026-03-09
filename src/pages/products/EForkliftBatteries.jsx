@@ -431,9 +431,9 @@ const EForkliftBatteries = () => {
                   <MessageSquare size={16} /> Contact Our Industrial Solutions
                   Team
                 </CtaButtonPrimary>
-                <CtaButtonOutline href="/assets/e-forklift-specs.pdf" download>
+                {/* <CtaButtonOutline href="/assets/e-forklift-specs.pdf" download>
                   <Download size={15} /> Download Specs
-                </CtaButtonOutline>
+                </CtaButtonOutline> */}
               </CtaButtonRow>
             </CtaWrapper>
           </Animated>

@@ -226,7 +226,7 @@ const EDroneBatteries = () => {
               <Animated animation="fadeInRight" duration={0.8}>
                 <ResilienceImageWrap>
                   <img
-                    src="https://images.unsplash.com/photo-1559827599-52ebde540f26?q=80&w=1000&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1659543690669-d40b1bfefc12?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Industrial drone inspection"
                     loading="lazy"
                   />
@@ -374,7 +374,7 @@ const EDroneBatteries = () => {
           <AppsGrid>
             {[
               {
-                img: "https://images.unsplash.com/photo-1563985040-02e09ae54fb7?q=80&w=600&auto=format&fit=crop",
+                img: "https://images.unsplash.com/photo-1713952152768-5f28b8093166?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 icon: <Tractor size={18} />,
                 title: "Agriculture Spraying",
                 desc: "Reliable high-discharge power for crop spraying drones.",
@@ -390,7 +390,7 @@ const EDroneBatteries = () => {
                 delay: 0.2,
               },
               {
-                img: "https://images.unsplash.com/photo-1629849048386-8d5a22830f02?q=80&w=600&auto=format&fit=crop",
+                img: "https://images.unsplash.com/photo-1728808668131-76d40d112271?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 icon: <Crosshair size={18} />,
                 title: "Infrastructure Inspection",
                 desc: "Stable power for power lines, wind turbines, and pipelines.",

@@ -215,7 +215,7 @@ const ECleaningMachineBatteries = () => {
                 delay: 0.1,
               },
               {
-                img: "https://images.unsplash.com/photo-1504904116278-faa29f477207?q=80&w=800&auto=format&fit=crop",
+                img: "https://plus.unsplash.com/premium_photo-1661479399824-363db30a50b7?q=80&w=1479&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 alt: "Warehouse Sweepers",
                 title: "Warehouse Sweepers",
                 desc: "Consistent power output for large-area dust and debris removal.",

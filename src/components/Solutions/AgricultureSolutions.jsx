@@ -29,7 +29,7 @@ const AgricultureSolutions = () => {
               <ImageSide $order={1}>
                 <ImageWrapper>
                   <BlockImage
-                    src="https://images.unsplash.com/photo-1563985040-02e09ae54fb7?q=80&w=1000&auto=format&fit=crop"
+                    src="/images/product7.jpeg"
                     alt="Agricultural Drone Spraying Field"
                     loading="lazy"
                   />

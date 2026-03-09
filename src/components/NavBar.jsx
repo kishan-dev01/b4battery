@@ -31,7 +31,7 @@ const NavBar = () => {
     { title: "Home", path: "/" },
     {
       title: "Products",
-      path: "/products",
+      path: "#",
       isDropdown: true,
       isMega: true,
       groups: [

@@ -50,7 +50,7 @@ const BaaSSection = () => {
               </IntroText>
 
               <CTAWrapper>
-                <CTAButton href="/baas">
+                <CTAButton href="/products/battery-swapping">
                   Learn About BaaS <ArrowRight size={20} />
                 </CTAButton>
                 <CTASubtext>
