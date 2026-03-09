@@ -55,21 +55,22 @@ const Footer = () => {
             <ArrowRight size={16} />
             About Us
           </QuickLink>
-          <QuickLink href="/products">
+
+          <QuickLink href="/technology">
             <ArrowRight size={16} />
-            Products
+            Technology
           </QuickLink>
-          <QuickLink href="/franchise-model">
+          <QuickLink href="/solutions">
             <ArrowRight size={16} />
-            Franchise Model
+            Solutions
           </QuickLink>
-          <QuickLink href="/vle-hub">
+          <QuickLink href="/sustainability">
             <ArrowRight size={16} />
-            VLE Hub
+            Sustainability
           </QuickLink>
-          <QuickLink href="/emi-payment">
+          <QuickLink href="/news">
             <ArrowRight size={16} />
-            EMI Payment
+            News & Media
           </QuickLink>
           <QuickLink href="/careers">
             <ArrowRight size={16} />
@@ -82,7 +83,7 @@ const Footer = () => {
           <SectionTitle>Contact Us</SectionTitle>
           <ContactInfo>
             <MapPin size={20} />
-            <span>Electronic City, Bangalore</span>
+            <span>Lucknow</span>
           </ContactInfo>
           <ContactInfo>
             <Phone size={20} />
@@ -90,7 +91,7 @@ const Footer = () => {
           </ContactInfo>
           <ContactInfo>
             <Mail size={20} />
-            <span>info@b4battery.com</span>
+            <span>info@b4bigbattery.com</span>
           </ContactInfo>
           <BusinessHours>
             <SectionTitle>Business Hours</SectionTitle>
@@ -142,13 +143,13 @@ const Footer = () => {
         <div>
           © {new Date().getFullYear()} B4 Big Battery. All rights reserved.
         </div>
-        <div style={{ display: "flex", gap: "1rem" }}>
+        {/* <div style={{ display: "flex", gap: "1rem" }}>
           <QuickLink href="/privacy">Privacy Policy</QuickLink>
           {" | "}
           <QuickLink href="/terms">Terms of Service</QuickLink>
           {" | "}
           <QuickLink href="/sitemap">Sitemap</QuickLink>
-        </div>
+        </div> */}
       </BottomBar>
     </FooterContainer>
   );
@@ -318,7 +319,7 @@ const BottomBar = styled.div`
   color: var(--color-text-secondary);
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
